@@ -4,27 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://unpkg.com/vue@2.5.17"></script>
 </head>
 
 <body>
     <div id="app">
-        <p>{{ items[0].name }}: {{ items[0].price }} x {{ items[0].quantity }}</p>
-        <p>{{ items[1].name }}: {{ items[1].price }} x {{ items[1].quantity }}</p>
-        <p>{{ items[2].name }}: {{ items[2].price }} x {{ items[2].quantity }}</p>
-        <p>小計: {{ totalPrice | numberWithDelimiter }}円</p>
-        <p>合計(税込): {{ totalPriceWithTax | numberWithDelimiter }}円</p>
-        <!-- 属性値に応じて、表示を出し分けする-->
-        <p v-show="!canBuy">
-            {{ 3000 | numberWithDelimiter }}円以上からクーポンが使えます
-        </p>
+        <!-- 3000円以上になるまで赤く表示する-->
+        <div :style="errorMessageStyle">
+            <p>{{ items[0].name }}: {{ items[0].price }} x {{ items[0].quantity }}</p>
+            <p>{{ items[1].name }}: {{ items[1].price }} x {{ items[1].quantity }}</p>
+            <p>{{ items[2].name }}: {{ items[2].price }} x {{ items[2].quantity }}</p>
+            <p>小計: {{ totalPrice | numberWithDelimiter }}円</p>
+            <p>合計(税込): {{ totalPriceWithTax | numberWithDelimiter }}円</p>
+            <!-- 属性値に応じて、表示を出し分けする-->
+            <p v-show="!canCoupon">
+                {{ 3000 | numberWithDelimiter }}円以上からクーポンが使えます
+            </p>
+        </div>
     </div>
     <script>
         // ロードされ、Vueがグローバル変数として定義されているか確認
         console.assert(typeof Vue !== 'undefined');
         var items = [
             {
-                name: 'ラーメン', price: 750, quantity: 1
+                name: 'ラーメン', price: 750, quantity: 3
             }, {
                 name: '餃子', price: 500, quantity: 1
             }, {
@@ -54,8 +58,15 @@
                     // 算出プロパティに依存した算出プロパティも定義できる
                     return Math.floor(this.totalPrice * 1.08)
                 },
-                canBuy: function () {
+                canCoupon: function () {
                     return this.totalPriceWithTax >= 3000 // 3000円以上からクーポンを使用可能にする
+                },
+                errorMessageStyle: function() {
+                    // canCouponがfalseの時に赤く表示する
+                    return {
+                        border: this.canCoupon ? '' : '1px solid red',
+                        color: this.canCoupon ? '' : 'red'
+                    }
                 }
             }
         });
