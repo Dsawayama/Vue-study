@@ -12,9 +12,10 @@
     <div id="app">
         <!-- 3000円以上になるまで赤く表示する-->
         <div :style="errorMessageStyle">
-            <p>{{ items[0].name }}: {{ items[0].price }} x {{ items[0].quantity }}</p>
-            <p>{{ items[1].name }}: {{ items[1].price }} x {{ items[1].quantity }}</p>
-            <p>{{ items[2].name }}: {{ items[2].price }} x {{ items[2].quantity }}</p>
+            <!-- 各メニューの単価と購入個数をリスト表示する-->
+            <li v-for="item in items" v-bind:key="item.name">
+                {{ item.name }}: {{ item.price }} x {{ item.quantity }} = {{ item.price * item.quantity |numberWithDelimiter}}
+            </li>
             <p>小計: {{ totalPrice | numberWithDelimiter }}円</p>
             <p>合計(税込): {{ totalPriceWithTax | numberWithDelimiter }}円</p>
             <!-- 属性値に応じて、表示を出し分けする-->
@@ -28,7 +29,7 @@
         console.assert(typeof Vue !== 'undefined');
         var items = [
             {
-                name: 'ラーメン', price: 750, quantity: 3
+                name: 'ラーメン', price: 750, quantity: 1
             }, {
                 name: '餃子', price: 500, quantity: 1
             }, {
