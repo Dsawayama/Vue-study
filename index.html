@@ -11,22 +11,12 @@
     <div id="app">
       <ul>
         <li v-for="item in items" v-bind:key="item.name">
-          <!-- v-onのchangeでイベントが発生した時に属性値で指定した式を評価する -->
+          <!-- v-onのchangeディレクティブの代わりにv-modelを使用 -->
           {{ item.name }}の金額：
-          <input
-            type="number"
-            v-on:change="item.price = $event.target.value"
-            v-bind:value="item.price"
-            min="0"
-          />
-          <!-- v-onのinputでイベントが発生した時に属性値で指定した式を評価する -->
+          <input type="number" v-model.lazy="item.price" min="0" />
+          <!-- v-onのinputディレクティブの代わりにv-modelを使用 -->
           {{ item.name }}の個数:
-          <input
-            type="number"
-            v-on:input="item.quantity = $event.target.value"
-            v-bind:value="item.quantity"
-            min="0"
-          />
+          <input type="number" v-model="item.quantity" min="0" />
         </li>
       </ul>
       <!-- 3000円以上になるまで赤く表示する-->
