@@ -32,6 +32,8 @@
         <p v-show="!canCoupon">
           {{ 3000 | numberWithDelimiter }}円以上からクーポンが使えます
         </p>
+        <!-- ボタンが押されたら、メソッドを呼び出す -->
+        <button v-bind:disabled="!canCoupon" v-on:click="doCoupon">クーポン使用</button>
       </div>
     </div>
     <script>
@@ -68,6 +70,15 @@
             return value.toString().replace(/(\d)(?=(\d{3})+$)/g, "$1,");
           }
         },
+        methods: {
+                doCoupon: function () {
+                    // 本来はここで、サーバーと通信をおこなう
+                    alert('クーポン適用完了！')
+                    this.items.forEach(function (item) {
+                        item.quantity = 0
+                    })
+                }
+            },
         computed: {
           totalPrice: function() {
             return this.items.reduce(function(sum, item) {
