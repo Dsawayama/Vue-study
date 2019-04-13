@@ -2,11 +2,44 @@
 
 <div id="sports-list">
     <sports-list-title></sports-list-title>
+    <sports-list-description></sports-list-description>
+    <sports-list-table></sports-list-table>
 </div>
 
 <script>
     Vue.component('sports-list-title', {
         template: '<h1>スポーツ一覧</h1>'
+    })
+
+    Vue.component('sports-list-description', {
+        template:'<p>季節の代表的なスポーツの一覧です</P>'
+    })
+
+    Vue.component('sports-list-table', {
+        template: `
+        <table>
+            <tr>
+                <th>季節</th>
+                <th>スポーツ</th>
+            </tr>
+            <tr>
+                <td>春</td>
+                <td>バレー</td>
+            </tr>
+            <tr>
+                <td>夏</td>
+                <td>野球</td>
+            </tr>
+            <tr>
+                <td>秋</td>
+                <td>サッカー</td>
+            </tr>
+            <tr>
+                <td>冬</td>
+                <td>マラソン</td>
+            </tr>
+        </table>
+        `
     })
     
     new Vue({
