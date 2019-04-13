@@ -1,6 +1,7 @@
 <script src="https://unpkg.com/vue@2.5.17"></script>
 
 <div id="sports-list">
+    <sports-list></sports-list>
     <sports-list-title></sports-list-title>
     <sports-list-description></sports-list-description>
     <sports-list-table></sports-list-table>
@@ -9,6 +10,10 @@
 <script>
     Vue.component('sports-list-title', {
         template: '<h1>スポーツ一覧</h1>'
+    })
+
+    Vue.component('sports-list', {
+        template: '<div><sports-list-title></sports-list-title></div>'
     })
 
     Vue.component('sports-list-description', {
