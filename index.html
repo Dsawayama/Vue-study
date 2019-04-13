@@ -1,0 +1,15 @@
+<script src="https://unpkg.com/vue@2.5.17"></script>
+
+<div id="sports-list">
+    <sports-list-title></sports-list-title>
+</div>
+
+<script>
+    Vue.component('sports-list-title', {
+        template: '<h1>スポーツ一覧</h1>'
+    })
+    
+    new Vue({
+        el: '#sports-list'
+    })
+</script>
