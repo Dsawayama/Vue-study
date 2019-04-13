@@ -1,27 +1,18 @@
 <script src="https://unpkg.com/vue@2.5.17"></script>
 
 <div id="sports-list">
-    <sports-list></sports-list>
-    <sports-list-title></sports-list-title>
-    <sports-list-description></sports-list-description>
-    <sports-list-table></sports-list-table>
+  <sports-list-title></sports-list-title>
+  <sports-list-description></sports-list-description>
+  <sports-list-table></sports-list-table>
 </div>
 
 <script>
-    Vue.component('sports-list-title', {
-        template: '<h1>スポーツ一覧</h1>'
-    })
+  Vue.component("sports-list-description", {
+    template: "<p>季節の代表的なスポーツの一覧です</P>"
+  });
 
-    Vue.component('sports-list', {
-        template: '<div><sports-list-title></sports-list-title></div>'
-    })
-
-    Vue.component('sports-list-description', {
-        template:'<p>季節の代表的なスポーツの一覧です</P>'
-    })
-
-    Vue.component('sports-list-table', {
-        template: `
+  Vue.component("sports-list-table", {
+    template: `
         <table>
             <tr>
                 <th>季節</th>
@@ -45,9 +36,14 @@
             </tr>
         </table>
         `
-    })
-    
-    new Vue({
-        el: '#sports-list'
-    })
+  });
+
+  new Vue({
+    el: "#sports-list",
+    components: {
+      "sports-list-title": {
+        template: "<h1>スポーツ一覧</h1>"
+      }
+    }
+  })
 </script>
