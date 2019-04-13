@@ -3,15 +3,22 @@
 <div id="sports-list">
   <sports-list-title></sports-list-title>
   <sports-list-description></sports-list-description>
+  <sports-list-memo></sports-list-memo>
   <sports-list-table></sports-list-table>
 </div>
 
+<script type="text/x-template" id="sports-list-memo">
+    <p>スポーツは健康に良いです！!</p>
+</script>
 <script>
-  Vue.component("sports-list-description", {
-    template: "<p>季節の代表的なスポーツの一覧です</P>"
+  Vue.component('sports-list-description', {
+    template: '<p>季節の代表的なスポーツの一覧です</P>'
   });
+  Vue.component('sports-list-memo', {
+      template: '#sports-list-memo'
+  })
 
-  Vue.component("sports-list-table", {
+  Vue.component('sports-list-table', {
     template: `
         <table>
             <tr>
@@ -39,9 +46,9 @@
   });
 
   new Vue({
-    el: "#sports-list",
+    el: '#sports-list',
     components: {
-      "sports-list-title": {
+      'sports-list-title': {
         template: "<h1>スポーツ一覧</h1>"
       }
     }
