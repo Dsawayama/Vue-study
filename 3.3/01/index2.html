@@ -1,0 +1,28 @@
+<script src="https://unpkg.com/vue@2.5.17"></script>
+<!-- 親がsports-componentにマウントされたインスタンス -->
+<div id="sports-component">
+    <ol>
+        <sports-item-name v-for="sport in sportsItems" :key="sport.name" :sports-item="sport"></sports-item-name>
+    </ol>
+</div>
+<script>
+    Vue.component('sports-item-name', {
+        props: {
+            sportsItem: {
+                type: Object,
+                required: true
+            }
+        },
+        template: '<li>{{sportsItem.name}}</li>'
+    })
+    
+    new Vue({
+        el: '#sports-component',
+        data: {
+            sportsItems: [
+                {name: '野球'},
+                {name: 'サッカー'}
+            ]
+        }
+    })
+</script>
