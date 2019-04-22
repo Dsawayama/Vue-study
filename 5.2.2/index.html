@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue app</title>
+    <script src="https://unpkg.com/vue@2.5.17"></script>
+</head>
+<body>
+    <div id="app">
+        <my-page>
+            <!-- name属性値か headerの<slot>と置き換わるコンテンツ -->
+            <h1 slot="header">This is my page</h1>
+            <!-- 単一スロットと置き換わるコンテンツ -->
+            <p>
+                This is Body
+            </p>
+            <!-- name属性値か footerの<slot>と置き換わるコンテンツ -->
+            <p slot="footer">This is footer</p>
+        </my-page>
+    </div>
+    <script src="./app.js"></script>
+</body>
+</html>
