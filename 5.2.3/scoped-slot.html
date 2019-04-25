@@ -10,7 +10,7 @@
 <body>
     <div id="app">
         <todo-list :todos="todos">
-            <li slot-scope="{ todo }" v-if="todo.isCompleted">
+            <li slot-scope="{ todo }" v-if="todo.isCompleted" :key="todo.id">
             {{ todo.text }}
             </li>
         </todo-list>
