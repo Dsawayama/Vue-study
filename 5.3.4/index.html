@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue app</title>
+    <script src="https://unpkg.com/vue@2.5.17"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- src属性は前回に続き、存在しないURLになっています -->
+        <img v-fallback-image.once="noImageURL" src="./logo.png" :alt="allText">
+    </div>
+    <script src="./app.js"></script>
+</body>
+</html>
