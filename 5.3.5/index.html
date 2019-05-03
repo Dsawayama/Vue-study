@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue app</title>
+    <script src="https://unpkg.com/vue@2.5.17"></script>
+</head>
+<body>
+    <!-- importや初期化が必要だが、v-dataだけで簡単にバインディングできる -->
+    <input type="text" v-data="data">
+</body>
+<script>
+    import Pikaday from 'pikaday'
+    import 'pikaday/css/pikaday.css'
+
+    export dafault {
+        bind: (el, binding) => {
+            el.PikadayInstance = new Pikaday({
+                field: el,
+                onSelect: () => {
+                    var event = new Event('input', { bubbles: ture})
+                    el.value = el.PikadayInstance.toString()
+                    el.dispatchEvent(event)
+                }
+            })
+        },
+        unbind: (el) => {
+            el.PikadayInstance.dostroy()
+        }
+    }
+</script>
+</html>
